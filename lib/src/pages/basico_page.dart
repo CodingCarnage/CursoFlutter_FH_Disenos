@@ -9,59 +9,94 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _createImage(),
-          _createTitle(),
-          _createActions(),
-          _createDescription(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _createImage(),
+            _createTitle(),
+            _createActions(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+            _createDescription(),
+          ],
+        ),
       ),
     );
   }
 
   Widget _createImage() {
-    return Image(
-      image: NetworkImage('https://images.unsplash.com/photo-1465268218846-a984c79f1045?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'),
+    return Container(
+      width: double.infinity,
+      child: Image(
+        image: NetworkImage(
+            'https://images.unsplash.com/photo-1465268218846-a984c79f1045?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'),
+        height: 180.0,
+        fit: BoxFit.cover,
+      ),
     );
   }
 
   Widget _createTitle() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Montaña con nubes',
-                  style: estiloTitulo,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  height: 7.0,
-                ),
-                Text(
-                  'Una montaña ubicada en cierta parte del mundo',
-                  style: estiloSubtitulo,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-          Icon(
-            Icons.star,
-            color: Colors.red,
-            size: 28.0,
-          ),
-          Text(
-            '41',
-            style: TextStyle(fontSize: 18.0),
-          ),
-        ],
+    return SafeArea(
+      top: false,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(child: _placeAndLocation()),
+            _rating(),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _placeAndLocation() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Montaña con nubes',
+          style: estiloTitulo,
+          overflow: TextOverflow.ellipsis,
+        ),
+        SizedBox(
+          height: 7.0,
+        ),
+        Text(
+          'Una montaña ubicada en cierta parte del mundo',
+          style: estiloSubtitulo,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+
+  Widget _rating() {
+    return Row(
+      children: <Widget>[
+        Icon(
+          Icons.star,
+          color: Colors.red,
+          size: 28.0,
+        ),
+        SizedBox(
+          width: 1.0,
+        ),
+        Text(
+          '41',
+          style: TextStyle(fontSize: 16.0),
+        ),
+      ],
     );
   }
 
@@ -99,11 +134,14 @@ class BasicoPage extends StatelessWidget {
   }
 
   Widget _createDescription() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Text(
-        'Minim proident ipsum velit exercitation sint ad eiusmod amet velit excepteur veniam sunt magna. Cillum laboris velit anim voluptate sunt exercitation. Veniam in velit eu excepteur.',
-        textAlign: TextAlign.justify,
+    return SafeArea(
+      top: false,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Text(
+          'Minim proident ipsum velit exercitation sint ad eiusmod amet velit excepteur veniam sunt magna. Cillum laboris velit anim voluptate sunt exercitation. Veniam in velit eu excepteur.',
+          textAlign: TextAlign.justify,
+        ),
       ),
     );
   }

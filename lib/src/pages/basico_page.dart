@@ -11,46 +11,99 @@ class BasicoPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Image(
-            image: NetworkImage('https://images.unsplash.com/photo-1465268218846-a984c79f1045?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-            child: Row(
+          _createImage(),
+          _createTitle(),
+          _createActions(),
+          _createDescription(),
+        ],
+      ),
+    );
+  }
+
+  Widget _createImage() {
+    return Image(
+      image: NetworkImage('https://images.unsplash.com/photo-1465268218846-a984c79f1045?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'),
+    );
+  }
+
+  Widget _createTitle() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Montaña con nubes',
-                        style: estiloTitulo,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(
-                        height: 7.0,
-                      ),
-                      Text(
-                        'Una montaña ubicada en cierta parte del mundo',
-                        style: estiloSubtitulo,
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    ],
-                  ),
+                Text(
+                  'Montaña con nubes',
+                  style: estiloTitulo,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                Icon(
-                  Icons.star,
-                  color: Colors.red,
-                  size: 30.0,
+                SizedBox(
+                  height: 7.0,
                 ),
                 Text(
-                  '41',
-                  style: TextStyle(fontSize: 20.0),
+                  'Una montaña ubicada en cierta parte del mundo',
+                  style: estiloSubtitulo,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
           ),
+          Icon(
+            Icons.star,
+            color: Colors.red,
+            size: 28.0,
+          ),
+          Text(
+            '41',
+            style: TextStyle(fontSize: 18.0),
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget _createActions() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _action(Icons.call, 'Call'),
+        _action(Icons.near_me, 'Route'),
+        _action(Icons.share, 'Share')
+      ],
+    );
+  }
+
+  Widget _action(IconData icon, String texto) {
+    return Column(
+      children: <Widget>[
+        Icon(
+          icon,
+          color: Colors.blue,
+          size: 38.0,
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          texto,
+          style: TextStyle(
+            fontSize: 11.0,
+            color: Colors.blue,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _createDescription() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+      child: Text(
+        'Minim proident ipsum velit exercitation sint ad eiusmod amet velit excepteur veniam sunt magna. Cillum laboris velit anim voluptate sunt exercitation. Veniam in velit eu excepteur.',
+        textAlign: TextAlign.justify,
       ),
     );
   }

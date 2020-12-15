@@ -103,13 +103,16 @@ class BasicoPage extends StatelessWidget {
   Widget _createActions() {
     return SafeArea(
       top: false,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _action(Icons.call, 'Call'),
-          _action(Icons.near_me, 'Route'),
-          _action(Icons.share, 'Share')
-        ],
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _action(Icons.call, 'Call'),
+            _action(Icons.near_me, 'Route'),
+            _action(Icons.share, 'Share')
+          ],
+        ),
       ),
     );
   }
@@ -140,7 +143,7 @@ class BasicoPage extends StatelessWidget {
     return SafeArea(
       top: false,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        padding: const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 20.0),
         child: Text(
           'Minim proident ipsum velit exercitation sint ad eiusmod amet velit excepteur veniam sunt magna. Cillum laboris velit anim voluptate sunt exercitation. Veniam in velit eu excepteur.',
           textAlign: TextAlign.justify,

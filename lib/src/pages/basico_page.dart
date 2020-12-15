@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class BasicoPage extends StatelessWidget {
   const BasicoPage({Key key}) : super(key: key);
 
-  static const TextStyle estiloTitulo = TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold);
-  static const TextStyle estiloSubtitulo = TextStyle(fontSize: 14.0, color: Colors.grey);
+  static const TextStyle estiloTitulo =
+      TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold);
+  static const TextStyle estiloSubtitulo =
+      TextStyle(fontSize: 14.0, color: Colors.grey);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,6 @@ class BasicoPage extends StatelessWidget {
             _createImage(),
             _createTitle(),
             _createActions(),
-            _createDescription(),
-            _createDescription(),
             _createDescription(),
             _createDescription(),
             _createDescription(),
@@ -69,7 +69,7 @@ class BasicoPage extends StatelessWidget {
           style: estiloTitulo,
           overflow: TextOverflow.ellipsis,
         ),
-        SizedBox(
+        const SizedBox(
           height: 7.0,
         ),
         Text(
@@ -89,7 +89,7 @@ class BasicoPage extends StatelessWidget {
           color: Colors.red,
           size: 28.0,
         ),
-        SizedBox(
+        const SizedBox(
           width: 1.0,
         ),
         Text(
@@ -101,13 +101,16 @@ class BasicoPage extends StatelessWidget {
   }
 
   Widget _createActions() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        _action(Icons.call, 'Call'),
-        _action(Icons.near_me, 'Route'),
-        _action(Icons.share, 'Share')
-      ],
+    return SafeArea(
+      top: false,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _action(Icons.call, 'Call'),
+          _action(Icons.near_me, 'Route'),
+          _action(Icons.share, 'Share')
+        ],
+      ),
     );
   }
 
@@ -119,7 +122,7 @@ class BasicoPage extends StatelessWidget {
           color: Colors.blue,
           size: 38.0,
         ),
-        SizedBox(
+        const SizedBox(
           height: 5.0,
         ),
         Text(

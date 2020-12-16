@@ -43,8 +43,8 @@ class MenuPage extends StatelessWidget {
     final blob = Transform.rotate(
       angle: -pi / 5.0,
       child: Container(
-        height: 330.0,
-        width: 330.0,
+        height: 360.0,
+        width: 360.0,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
             Color.fromRGBO(236, 98, 188, 1.0),
@@ -58,7 +58,10 @@ class MenuPage extends StatelessWidget {
     return Stack(
       children: <Widget>[
         gradient,
-        Positioned(child: blob, top: -100.0),
+        Positioned(
+          child: blob,
+          top: -100.0,
+        ),
       ],
     );
   }
@@ -74,7 +77,7 @@ class MenuPage extends StatelessWidget {
               'Classify transaction',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 28.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -85,7 +88,7 @@ class MenuPage extends StatelessWidget {
               'Classify this transaction into a particular category',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 16.0,
+                fontSize: 18.0,
               ),
             ),
           ],

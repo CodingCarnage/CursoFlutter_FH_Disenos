@@ -20,6 +20,7 @@ class MenuPage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: _bottomNavigationBar(context),
     );
   }
 
@@ -86,6 +87,27 @@ class MenuPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _bottomNavigationBar(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+        primaryColor: Colors.pinkAccent,
+        textTheme: Theme.of(context).textTheme.copyWith(
+          caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0))
+        )
+      ), 
+      child: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle), label: ''),
+        ],
       ),
     );
   }

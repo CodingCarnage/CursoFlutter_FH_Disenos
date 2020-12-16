@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -121,50 +122,46 @@ class MenuPage extends StatelessWidget {
     return Table(
       children: <TableRow>[
         TableRow(children: <Widget>[
-          _createButton(),
-          _createButton(),
+          _createButton(Colors.blueAccent, Icons.border_all, 'General'),
+          _createButton(Colors.purpleAccent, Icons.mail, 'Mail'),
         ]),
         TableRow(children: <Widget>[
-          _createButton(),
-          _createButton(),
+          _createButton(Colors.redAccent, Icons.cloud, 'Weather'),
+          _createButton(Colors.amberAccent, Icons.verified_user, 'Security'),
         ]),
         TableRow(children: <Widget>[
-          _createButton(),
-          _createButton(),
+          _createButton(Colors.cyanAccent, Icons.sanitizer, 'Santized'),
+          _createButton(Colors.limeAccent, Icons.alarm, 'Alarm'),
         ]),
         TableRow(children: <Widget>[
-          _createButton(),
-          _createButton(),
+          _createButton(Colors.indigoAccent, Icons.nightlife, 'Dark'),
+          _createButton(Colors.tealAccent, Icons.add, 'Add'),
         ]),
       ],
     );
   }
 
-  Widget _createButton() {
-    return Container(
-      height: 180.0,
-      margin: const EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(62, 66, 107, 0.7),
-          borderRadius: BorderRadius.circular(20.0)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          const SizedBox(height: 5.0),
-          CircleAvatar(
-            radius: 35.0,
-            child: Icon(
-              Icons.mail,
-              color: Colors.white,
-              size: 30.0,
+  Widget _createButton(Color color, IconData icon, String text) {
+    return Opacity(
+      opacity: 0.80,
+      child: Container(
+        height: 180.0,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          color: Color.fromRGBO(62, 66, 107, 1.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CircleAvatar(
+              backgroundColor: color,
+              radius: 30.0,
+              child: Icon(icon, color: Colors.white, size: 30.0),
             ),
-          ),
-          Text(
-            'Dato',
-            style: TextStyle(color: Colors.pinkAccent),
-          ),
-          const SizedBox(height: 5.0),
-        ],
+            Text(text, style: TextStyle(color: color)),
+          ],
+        ),
       ),
     );
   }

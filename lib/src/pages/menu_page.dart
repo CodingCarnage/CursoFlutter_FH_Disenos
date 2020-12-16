@@ -15,6 +15,7 @@ class MenuPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _title(),
+                _buttons(),
               ],
             ),
           ),
@@ -77,7 +78,9 @@ class MenuPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 10.0,),
+            const SizedBox(
+              height: 10.0,
+            ),
             Text(
               'Classify this transaction into a particular category',
               style: TextStyle(
@@ -94,19 +97,70 @@ class MenuPage extends StatelessWidget {
   Widget _bottomNavigationBar(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
-        primaryColor: Colors.pinkAccent,
-        textTheme: Theme.of(context).textTheme.copyWith(
-          caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0))
-        )
-      ), 
+          canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+          primaryColor: Colors.pinkAccent,
+          textTheme: Theme.of(context).textTheme.copyWith(
+              caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0)))),
       child: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.supervised_user_circle), label: ''),
+        ],
+      ),
+    );
+  }
+
+  Widget _buttons() {
+    return Table(
+      children: <TableRow>[
+        TableRow(children: <Widget>[
+          _createButton(),
+          _createButton(),
+        ]),
+        TableRow(children: <Widget>[
+          _createButton(),
+          _createButton(),
+        ]),
+        TableRow(children: <Widget>[
+          _createButton(),
+          _createButton(),
+        ]),
+        TableRow(children: <Widget>[
+          _createButton(),
+          _createButton(),
+        ]),
+      ],
+    );
+  }
+
+  Widget _createButton() {
+    return Container(
+      height: 180.0,
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          color: Color.fromRGBO(62, 66, 107, 0.7),
+          borderRadius: BorderRadius.circular(20.0)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          const SizedBox(height: 5.0),
+          CircleAvatar(
+            radius: 35.0,
+            child: Icon(
+              Icons.mail,
+              color: Colors.white,
+              size: 30.0,
+            ),
+          ),
+          Text(
+            'Dato',
+            style: TextStyle(color: Colors.pinkAccent),
+          ),
+          const SizedBox(height: 5.0),
         ],
       ),
     );

@@ -148,28 +148,34 @@ class MenuPage extends StatelessWidget {
   }
 
   Widget _createButton(Color color, IconData icon, String text) {
-    return Opacity(
-      opacity: 0.80,
-      child: Container(
-        height: 180.0,
-        margin: const EdgeInsets.all(15.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: const Color.fromRGBO(62, 66, 107, 1.0),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            CircleAvatar(
-              backgroundColor: color,
-              radius: 30.0,
-              child: Icon(icon, color: Colors.white, size: 30.0),
+    return Container(
+      height: 180.0,
+      margin: const EdgeInsets.all(15.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: const Color.fromRGBO(62, 66, 107, 0.7),
             ),
-            Text(
-              text,
-              style: TextStyle(color: color),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                const SizedBox(height: 5.0),
+                CircleAvatar(
+                  backgroundColor: color,
+                  radius: 40.0,
+                  child: Icon(icon, color: Colors.white, size: 30.0),
+                ),
+                Text(
+                  text,
+                  style: TextStyle(color: color),
+                ),
+                const SizedBox(height: 5.0),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
